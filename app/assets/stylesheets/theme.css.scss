@@ -1,0 +1,183 @@
+body#ficly {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #000;
+  font: 16px "Georgia", "Times New Roman", "Times", serif;
+
+  a {
+    color: #25abf1;
+    text-decoration: none;
+    &:hover, &:active {
+      color: #b51c2c;
+    }
+  }
+
+  & > header {
+    display: flex;
+    align-items: center;
+    max-width: 1024px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+
+    h1 {
+      flex: 0 0 339px;
+      margin: 0;
+      padding: 0;
+
+      a {
+        display: block;
+        width: 339px;
+        height: 64px;
+        text-indent: -2000px;
+        overflow: hidden;
+        background: image-url("ficly-logo-text.png") no-repeat;
+        background-size: 339px 64px;
+      }
+    }
+
+    nav {
+      flex: 1 1 auto;
+
+      ul {
+        display: flex;
+        margin: 0 0 0 20px;
+        padding: 0;
+        list-style: none;
+        align-items: center;
+
+        li {
+          flex: 1 1 auto;
+          margin: 0;
+          padding: 0;
+          a {
+            display: block;
+            padding: 10px;
+            background: #b51c2c;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            &:hover, &:active {
+              background: #25abf1;
+              color: #fff;
+            }
+          }
+
+          &:first-child {
+            a {
+              border-top-left-radius: 2px;
+              border-bottom-left-radius: 2px;
+            }
+          }
+          &:last-child {
+            a {
+              border-top-right-radius: 2px;
+              border-bottom-right-radius: 2px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  & > main {
+    max-width: 1024px;
+    margin: 50px auto 0;
+    padding: 0 20px;
+
+    ul.object-list, ol.object-list {
+      margin: 0;
+      padding: 0;
+
+      & > li {
+        display: flex;
+        margin: 0 0 25px;
+        padding: 0;
+
+        aside.avatar-container {
+          flex: 0 0 73px;
+          margin-right: 10px;
+
+          img.avatar {
+            max-width: 73px;
+          }
+        }
+        .item-meta {
+          h3 {
+            margin: 0 0 5px;
+            font-size: 17px;
+          }
+          p {
+            margin: 0 0 5px;
+            padding: 0;
+            font-size: 13px;
+
+            &:last-child {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+
+    div.pagination {
+      margin: 50px auto;
+      padding: 0;
+      display: flex;
+      align-items: center;
+
+      span, a, em {
+        flex: 1 1 auto;
+        &.current {
+          font-size: 30px;
+        }
+      }
+    }
+
+  }
+
+  & > footer {
+    display: flex;
+    align-items: center;
+    max-width: 1024px;
+    margin: 50px auto 0;
+    padding: 0 20px;
+    font-size: 13px;
+
+    & > aside {
+      flex: 0 0 98px;
+      height: 57.1px;
+      margin: 0 20px 0 0;
+      background: image-url("ficly-logo-footer.png") no-repeat;
+      background-size: 98px 57.1px;
+      text-indent: 500px;
+      overflow: hidden;
+    }
+    & > section {
+      flex: 1 1 auto;
+      nav {
+        margin: 5px 0 0;
+
+        ul {
+          display: flex;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          li {
+            flex: 1 1 auto;
+            margin: 0;
+            padding: 0;
+            a {
+              display: block;
+              padding: 5px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

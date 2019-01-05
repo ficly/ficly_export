@@ -1,0 +1,17 @@
+<li class="story-list-item">
+  <% if story.user %>
+    <aside class="avatar-container">
+      <%= image_tag story.user.avatar, class: "avatar", alt: "" %>
+    </aside>
+  <% end %>
+  <div class="item-meta">
+    <h3><%= link_to story.title, story_path(story.id) %></h3>
+    <% if story.user %>
+    <p><strong>Author: </strong> <%= link_to story.user.name, author_path(story.user.uri_name) %></p>
+    <% end %>
+    <p>Published <abbr title="<%= story.published_at.to_s %>"><%= story.display_published_at %></abbr></p>
+    <% if story.clean_average_rating > 0 %>
+    <p>Average rating: <span class="rating"><%= story.clean_average_rating %></span> out of 5</p>
+    <% end %>
+  </div>
+</li>

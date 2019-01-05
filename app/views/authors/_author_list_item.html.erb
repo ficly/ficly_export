@@ -1,0 +1,9 @@
+<li class="author">
+  <aside class="avatar-container">
+    <%= image_tag author.avatar, alt: "", class: "avatar" %>
+  </aside>
+  <div class="item-meta">
+    <h3><%= link_to author.name, author_path(author.uri_name) %></h3>
+    <p><%= pluralize(author.stories.published.count, "stories") %>, <%= pluralize(author.challenges.count, "challenges") %> &amp; <%= pluralize(author.friends.count, "friends") %> on Ficly</p>
+  </div>
+</li>

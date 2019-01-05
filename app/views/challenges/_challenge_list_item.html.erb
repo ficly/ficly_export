@@ -1,0 +1,14 @@
+<li class="challenge-list-item">
+  <% if challenge.user %>
+    <aside class="avatar-container">
+      <%= image_tag challenge.user.avatar, class: "avatar", alt: "" %>
+    </aside>
+  <% end %>
+  <div class="item-meta">
+    <h3><%= link_to challenge.title, challenge_path(challenge.id) %></h3>
+    <% if challenge.user %>
+    <p>Creator: <%= link_to challenge.user.name, author_path(challenge.user.uri_name) %></p>
+    <p><%= pluralize(challenge.stories.count, "entries") %></p>
+    <% end %>
+  </div>
+</li>
