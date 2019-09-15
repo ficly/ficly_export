@@ -1,0 +1,8 @@
+#!/bin/sh
+USER=ficly_archive
+HOST=export.ficly.com
+DIR=export.ficly.com/   # might sometimes be empty!
+
+rsync -avz --delete tmp/export/ ${USER}@${HOST}:~/${DIR}
+
+exit 0

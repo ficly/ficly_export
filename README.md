@@ -4,4 +4,33 @@ This won't do you much good if you don't have the data, but this is my attempt t
 
 It took too long, but it works.
 
-I'll be putting the sql export up at some point so you can play with this yourself, and maybe make it prettier, more responsive, etc.
+## Local Setup
+
+### Requirements
+
+* Ruby 2.6.3
+* MySQL or MariaDB
+  * The default database.yml is localhost, and root w/out a password.
+  * The database name is `ficly_export`
+
+### Getting the Data
+
+The sql file to import is in db/export.sql.gz.  It's a little over 600mb uncompressed.  So, you'll need to do something like:
+
+```cd db
+gunzip export.sql.gz
+mysql < export.sql
+```
+
+### Setting up Rails
+
+* You'll need to install Ruby 2.6.3 however you want to make that happen.
+* Install the bundler gem: `gem install bundler`
+* `bundle`
+
+And there you go!
+
+## TODO
+
+* Could be better looking. You're welcome to help with that and submit a pull request!
+* Speed up the export process. You're also welcome to help with that.  To look at the monster as it is, check out lib/tasks/export.rake.
