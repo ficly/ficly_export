@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_01_161509) do
+ActiveRecord::Schema.define(version: 2019_01_12_212902) do
 
   create_table "activities", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "recipient_id"
@@ -262,6 +262,7 @@ ActiveRecord::Schema.define(version: 2019_01_01_161509) do
 
   create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.string "cleaned_tag"
     t.index ["name"], name: "index_tags_on_name"
   end
 

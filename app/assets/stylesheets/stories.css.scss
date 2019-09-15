@@ -2,3 +2,29 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+body#ficly {
+  aside.story-meta {
+    float: right;
+    max-width: 200px;
+    padding: 10px;
+    margin: 10px 0 10px 10px;
+    background: #f6f5f0;
+    font-size: 13px;
+
+    @media (max-width: 400px) {
+      float: none;
+      max-width: 100%;
+      margin-left: 0;
+    }
+
+  }
+
+  div.story-body {
+    font-size: 18px;
+  }
+
+  section.prequels-and-sequels {
+    clear: both;
+  }
+}

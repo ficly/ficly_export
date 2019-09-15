@@ -1,0 +1,31 @@
+<% content_for :title do %>
+  <%= @post.title %>
+<% end %>
+
+<article>
+  <header>
+    <h1><%= @post.title %></h1>
+  </header>
+  <section>
+    <%= raw @post.to_html %>
+  </section>
+  <footer>
+    <% n_comments = @post.comments.count%>
+    <span><%= n_comments %> <%= "comments".pluralize(n_comments) %></span>
+    <span>Posted <abbr class="published" title="<%= @post.created_at.to_formatted_s(:db) %>"><%= @post.created_at.to_date.to_formatted_s(:db) %></abbr></span>
+    <span>Author: <%= link_to @post.user.name, author_path(@post.user.uri_name) %></span>
+  </footer>
+
+  <% if @post.comments.any? %>
+  <section id="comments">
+    <h3>Comments</h3>
+    <ul>
+    <% @post.comments.each do |comment| %>
+      <% next if comment.body.strip.blank? %>
+      <%= render partial: "/shared/comment", locals: { comment: comment } %>
+    <% end %>
+    </ul>
+  </section>
+  <% end %>
+
+</article>

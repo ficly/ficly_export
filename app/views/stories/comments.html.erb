@@ -1,6 +1,6 @@
 <% content_for :title do %>
 Comments on <%= @story.title %>
-<% if @story.user %>by <%= @story.user.name %><% end %>
+  <% if @story.user %>by <%= @story.user.name %><% end %>
 <% end %>
 
 <h1>Comments on <%= link_to @story.title, story_path(@story.id) %>
@@ -10,21 +10,7 @@ Comments on <%= @story.title %>
   <ul>
   <% @comments.each do |comment| %>
     <% next if comment.body.strip.blank? %>
-    <li id="comment-<%= comment.id %>" class="hreview">
-      <h3 class="reviewer vcard">
-        <%= link_to image_tag( comment.user.avatar, :class => "photo", :height => 73, :width => 73 ), author_path( comment.user.uri_name ), :class => "url" %>
-        <%= link_to h( comment.user.name ), author_path( comment.user.uri_name ), :class => "fn" %>
-      </h3>
-      <blockquote class="description">
-        <%= textilize( comment.body ).html_safe %>
-      </blockquote>
-      <ul class="meta clear">
-        <li class="posted">Posted <abbr class="dtreviewed" title="<%= comment.created_at.to_s %>"><a href="#comment-<%= comment.id %>" rel="self bookmark" title="Link to this comment"><%= distance_of_time_in_words_to_now comment.created_at %> ago</a></abbr>.</li>
-        <%- if @story.user_rating( comment.user ) -%>
-          <li class="rating"><span class="value"><%= @story.user_rating( comment.user ) %></span> out of <span class="best">5</span></li>
-        <%- end -%>
-      </ul>
-    </li>
+    <%= render partial: "shared/comment", locals: { comment: comment, story: @story } %>
   <% end %>
   </ul>
 </div>

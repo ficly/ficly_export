@@ -1,0 +1,40 @@
+<% content_for :title do %>
+  <%= @challenge.title %>
+  <% if @challenge.user %>
+    by <%= @challenge.user.name %>
+  <% end %>
+<% end %>
+
+<article class="challenge">
+  <h1><%= @challenge.title %></h1>
+  <% if @challenge.user %>
+    <%= render partial: "authors/author_meta", locals: { author: @challenge.user } %>
+  <% end %>
+  <aside class="meta challenge-meta">
+
+  </aside>
+  <div class="challenge-body">
+    <%= @challenge.to_html.html_safe %>
+  </div>
+
+  <% if @challenge.winner %>
+  <div class="challenge-winner">
+    <h2>Challenge Winner</h2>
+    <ul class="object-list stories-list">
+      <%= render partial: "stories/story_list_item", locals: { story: @challenge.winner } %>
+    </ul>
+  </div>
+  <% end %>
+
+  <% if @challenge.stories.any? %>
+  <div class="challenge-entries">
+    <h2>Challenge Entries</h2>
+    <ul class="object-list stories-list">
+    <% @challenge.stories.each do |story| %>
+      <%= render partial: "stories/story_list_item", locals: { story: story } %>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+</article>

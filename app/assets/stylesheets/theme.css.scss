@@ -79,6 +79,31 @@ body#ficly {
       }
     }
 
+    @media (max-width: 700px) {
+      
+      h1 {
+        flex: 0 0 60px;
+        a {
+          width: 60px;
+          height: 60px;
+          background: image-url("ficly-logo-circle.png") no-repeat;
+          background-size: 60px 60px;
+        }
+      }
+      nav {
+        ul {
+          margin: 0 0 0 10px;
+
+          li {
+            a {
+              padding: 10px 5px;
+              font-size: 11px;
+            }
+          }
+        }
+      }
+    }
+
   }
 
   & > main {
@@ -178,6 +203,27 @@ body#ficly {
         }
       }
     }
+
+    @media (max-width: 400px) {
+      max-width: 100%;
+      align-items: flex-start;
+
+      & > aside {
+        flex: 0 0 47px;
+        height: 28.5px;
+        margin-right: 5px;
+        background-size: 47px 28.5px;
+      }
+
+      & > section {
+        p {
+          margin: 0 0 5px;
+
+        }
+      }
+
+    }
+
   }
 
 }

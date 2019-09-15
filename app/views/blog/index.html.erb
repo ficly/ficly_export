@@ -1,0 +1,29 @@
+<% content_for :title do %>
+The Writer's Room
+<% end %>
+
+<h1>The Writer's Room</h1>
+
+<ol class="object-list blog-post-list hfeed">
+<% @posts.each do |post| %>
+  <li class="hentry">
+    <article>
+      <header><h2><%= link_to post.title, blog_path(post.basename) %></h2></header>
+      <section>
+        <%= raw RedCloth.new(post.body).to_html %>
+      </section>
+      <% if !post.extended_body.blank? %>
+        <%= link_to "Read More", blog_path(post.basename) %>
+      <% end %>
+      <footer>
+        <% n_comments = post.comments.count%>
+        <span><%= n_comments %> <%= "comments".pluralize(n_comments) %></span>
+        <span>Posted <abbr class="published" title="<%= post.created_at.to_formatted_s(:db) %>"><%= post.created_at.to_date.to_formatted_s(:db) %></abbr></span>
+        <span>Author: <%= link_to post.user.name, author_path(post.user.uri_name) %></span>
+      </footer>
+    </article>
+  </li>
+<% end %>
+</ol>
+
+<%= will_paginate @posts %>

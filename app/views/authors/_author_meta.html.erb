@@ -1,0 +1,14 @@
+<aside class="author-meta">
+  <% if author.icon %>
+    <div class="icon-container">
+      <%= image_tag author.icon.url, class: "avatar", alt: "" %>
+    </div>
+  <% end %>
+  <div class="author-mini-bio">
+    <p>Author: <%= link_to author.name, author_path(author.uri_name), rel: "me" %></p>
+    <p class="bio">
+      <%= author.bio_snippet %>
+      <%= link_to "Read bio", author_path(author.uri_name), rel: "me" %>
+    </p>
+  </div>
+</aside>

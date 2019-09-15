@@ -1,0 +1,17 @@
+<% content_for :title do %>
+All the Tags
+<% end %>
+
+<h1>Tags</h1>
+
+<ul class="object-list tags-list">
+<% @tags.each do |tag| %>
+  <li>
+    <%= link_to stories_tag_path(tag.cleaned_tag) do %>
+      <%= tag.cleaned_tag %> (<%= tag.stories.count %>)
+    <% end %>  
+  </li>
+<% end %>
+</ul>
+
+<%= will_paginate @tags %>
