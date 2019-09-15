@@ -98,9 +98,11 @@ namespace :export do
       total_pages = Story.published.where(id: story_ids).paginate(page: 1, per_page: 50).total_pages
       i = 1
 
-      while i <= total_pages
-        api.get("/tags/#{tag.cleaned_tag}/stories/#{i}")
-        i += 1
+      if total_pages > 1
+        while i <= total_pages
+          api.get("/tags/#{tag.cleaned_tag}/stories/#{i}")
+          i += 1
+        end
       end
     end
 
