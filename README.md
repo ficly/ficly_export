@@ -32,5 +32,5 @@ And there you go!
 
 ## TODO
 
-* Could be better looking. You're welcome to help with that and submit a pull request!
+* Could be better looking, especially on mobile. You're welcome to help with that and submit a pull request!
 * Speed up the export process. You're also welcome to help with that.  To look at the monster as it is, check out lib/tasks/export.rake.
