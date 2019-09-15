@@ -9,11 +9,11 @@ class Tag < ActiveRecord::Base
   end
 
   def calculate_counts
-    story_ids = self.taggings.where(taggable_type: "Story").pluck(:taggable_id)
+    story_ids = self.taggings.where(taggable_type: "Story").distinct.pluck(:taggable_id)
     self.stories_count = Story.published.where(id: story_ids).count
-    challenge_ids = self.taggings.where(taggable_type: "Challenge").pluck(:taggable_id)
+    challenge_ids = self.taggings.where(taggable_type: "Challenge").distinct.pluck(:taggable_id)
     self.challenges_count = challenge_ids.length
-    self.update_columns(stories_count: stories_count, challenges_count: challenges_count)
+    self.update_columns(stories_count: stories_count, challenges_count: challenges_count) if self.changed?
   end
 
   def stories
