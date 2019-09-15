@@ -67,8 +67,8 @@ class User < ActiveRecord::Base
 		:foreign_key => "user_id"
 
 	validates_uniqueness_of :uri_name
-	validates_uniqueness_of :login_key
-	validates_uniqueness_of :email, :allow_nil => true, :allow_blank => true
+	# validates_uniqueness_of :login_key
+	# validates_uniqueness_of :email, :allow_nil => true, :allow_blank => true
 
 	def self.update_solr
 		self.find_each do |u|

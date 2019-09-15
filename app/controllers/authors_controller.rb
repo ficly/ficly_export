@@ -12,7 +12,7 @@ class AuthorsController < ApplicationController
       flash[:alert] = "No author found."
       redirect_to authors_path and return
     end
-    @stories = @author.stories.published
+    @stories = @author.published_stories
     @challenges = @author.challenges
   end
 

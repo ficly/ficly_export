@@ -293,7 +293,6 @@ ActiveRecord::Schema.define(version: 2019_09_15_152846) do
     t.integer "continuity_rating", default: 0
     t.integer "authorship_rating", default: 0
     t.integer "challenger_rating", default: 0
-    t.string "email"
     t.boolean "send_daily_activity", default: false
     t.boolean "send_new_comments", default: false
     t.boolean "send_new_sequels", default: false
@@ -306,7 +305,6 @@ ActiveRecord::Schema.define(version: 2019_09_15_152846) do
     t.index ["challenger_rating"], name: "index_users_on_challenger_rating"
     t.index ["commenter_rating"], name: "index_users_on_commenter_rating"
     t.index ["continuity_rating"], name: "index_users_on_continuity_rating"
-    t.index ["email"], name: "index_users_on_email"
     t.index ["login_key", "login_type"], name: "index_users_on_login_key_and_login_type", unique: true
     t.index ["send_daily_activity"], name: "index_users_on_send_daily_activity"
     t.index ["send_new_notes"], name: "index_users_on_send_new_notes"

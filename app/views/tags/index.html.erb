@@ -8,8 +8,8 @@ All the Tags
 <% @tags.each do |tag| %>
   <li>
     <%= link_to stories_tag_path(tag.cleaned_tag) do %>
-      <%= tag.cleaned_tag %> (<%= tag.stories.count %>)
-    <% end %>  
+      <%= tag.cleaned_tag %> (<%= tag.stories_count %>)
+    <% end %>
   </li>
 <% end %>
 </ul>

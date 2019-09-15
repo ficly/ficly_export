@@ -21,7 +21,7 @@
     <h3>Comments</h3>
     <ul>
     <% @post.comments.each do |comment| %>
-      <% next if comment.body.strip.blank? %>
+      <% next if comment.body.strip.blank? || comment.user.nil? %>
       <%= render partial: "/shared/comment", locals: { comment: comment } %>
     <% end %>
     </ul>

@@ -9,7 +9,7 @@ Comments on <%= @story.title %>
 <div id="comments">
   <ul>
   <% @comments.each do |comment| %>
-    <% next if comment.body.strip.blank? %>
+    <% next if comment.body.strip.blank? || comment.user.nil? %>
     <%= render partial: "shared/comment", locals: { comment: comment, story: @story } %>
   <% end %>
   </ul>

@@ -1,9 +1,12 @@
 namespace :export do
 
   task :all do
-    [:assets, :stories, :pages, :blog, :authors, :challenges, :tags].each do |t|
+    [:assets, :pages, :blog, :authors, :challenges, :stories, :tags].each do |t|
+      start_time = Time.now
       puts "Starting: #{t}"
       Rake::Task["export:#{t}"].invoke
+      end_time = Time.now
+      puts "Finished: #{t} in #{end_time - start_time} seconds"
     end
   end
 
