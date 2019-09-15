@@ -19,7 +19,7 @@ class TagsController < ApplicationController
     @page = params[:page].to_i
     @page = 1 if @page < 1
     story_ids = @tag.taggings.where(taggable_type: "Story").pluck(:taggable_id)
-    @stories = Story.published.where(id: story_ids).order("published_at asc").paginate(page: @page, per_page: 50)
+    @stories = Story.published.where(id: story_ids).includes(:user).order("published_at asc").paginate(page: @page, per_page: 50)
   end
   #
   # def challenges
