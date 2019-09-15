@@ -1,0 +1,26 @@
+<% content_for :title do %>
+  Tag: <%= @tag.name %>
+<% end %>
+
+<h1>Tag: <%= @tag.name %></h1>
+
+<h2>Stories Tagged With: <%= @tag.name %></h2>
+
+<ol class="object-list stories-list">
+<% @stories.each do |story| %>
+  <%= render partial: "/stories/story_list_item", locals: { story: story } %>
+<% end %>
+</ol>
+
+<%= will_paginate @stories %>
+
+<h2>Challenges Tagged With "<%= @tag.name %>"</h2>
+
+<ol class="object-list challenges-list">
+<% @challenges.each do |challenge| %>
+  <%= render partial: "/challenges/challenge_list_item", locals: { challenge: challenge } %>
+<% end %>
+</ol>
+
+
+<%= will_paginate @challenges %>

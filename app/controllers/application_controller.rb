@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   # You only want to do this if you really mean it,
   # and probably only after you've written the rake task:
-  
-  #after_action :export_content
+
+  after_action :export_content
 
   protected
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     file_dir = "#{output_dir}/#{request.path}"
     FileUtils.mkdir_p(file_dir)
     f = File.open("#{file_dir}/index.html", "w+")
-    f.puts response.body
+    f.puts response.body.squish
     f.close
     true
   end

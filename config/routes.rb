@@ -33,12 +33,14 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: [:index, :show] do
-    member do
+    collection do
       get 'page/:page' => 'tags#index', as: :index_page
-      get ':id/stories' => 'tags#stories', as: :stories
-      get ':id/stories/:page' => 'tags#stories', as: :stories_page
-      get ':id/challenges' => 'tags#challenges', as: :challenges
-      get ':id/challenges/:page' => 'tags#challenges', as: :challenges_page
+    end
+    member do
+      get 'stories' => 'tags#stories', as: :stories
+      get 'stories/:page' => 'tags#stories', as: :stories_page
+      get 'challenges' => 'tags#challenges', as: :challenges
+      get 'challenges/:page' => 'tags#challenges', as: :challenges_page
     end
   end
 

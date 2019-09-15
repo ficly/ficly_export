@@ -2,6 +2,20 @@ class Tag < ActiveRecord::Base
 
   has_many :taggings
 
+  def self.calculate_counts
+    Tag.find_each do |t|
+      t.calculate_counts
+    end
+  end
+
+  def calculate_counts
+    story_ids = self.taggings.where(taggable_type: "Story").pluck(:taggable_id)
+    self.stories_count = Story.published.where(id: story_ids).count
+    challenge_ids = self.taggings.where(taggable_type: "Challenge").pluck(:taggable_id)
+    self.challenges_count = challenge_ids.length
+    self.update_columns(stories_count: stories_count, challenges_count: challenges_count)
+  end
+
   def stories
     @story_ids ||= self.taggings.where(taggable_type: "Story").distinct.pluck(:taggable_id)
     @stories ||= Story.published.where(id: @story_ids)

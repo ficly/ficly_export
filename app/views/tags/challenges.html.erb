@@ -1,0 +1,14 @@
+<% content_for :title do %>
+Challenges Tagged With "<%= @tag.name %>" <% if @page > 1 %>- Page <%= @page %> of <%= @total_pages %> <% end %>
+<% end %>
+
+<h1>Challenges Tagged With "<%= @tag.name %>"</h1>
+
+<ol class="object-list challenges-list">
+<% @challenges.each do |challenge| %>
+  <%= render partial: "/challenges/challenge_list_item", locals: { challenge: challenge } %>
+<% end %>
+</ol>
+
+
+<%= will_paginate @challenges %>
