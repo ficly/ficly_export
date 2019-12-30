@@ -22,9 +22,19 @@ body#ficly {
 
   div.story-body {
     font-size: 18px;
+    border-bottom: 1px dotted #b8b8b8;
   }
 
   section.prequels-and-sequels {
     clear: both;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 0 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #b8b8b8;
+    nav.prequels, nav.sequels {
+      flex: 0 0 50%;
+    }
   }
+
 }

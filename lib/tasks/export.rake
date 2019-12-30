@@ -82,7 +82,7 @@ namespace :export do
   task :tags => :environment do
     api.get("/tags")
 
-    total_pages = Tag.where.not(cleaned_tag: [nil, "", '-']).where("stories_count > 0").paginate(page: @page, per_page: 250).total_pages
+    total_pages = Tag.where.not(cleaned_tag: [nil, "", '-', 'page']).where("stories_count > 0").paginate(page: @page, per_page: 250).total_pages
 
     i = 1
 
@@ -91,7 +91,7 @@ namespace :export do
       i += 1
     end
 
-    Tag.where.not(cleaned_tag: [nil, "", '-']).where("stories_count > 0").order("stories_count desc").find_each do |tag|
+    Tag.where.not(cleaned_tag: [nil, "", '-', 'page']).where("stories_count > 0").find_each do |tag|
       api.get("/tags/#{tag.cleaned_tag}/stories")
 
       story_ids = tag.taggings.where(taggable_type: "Story").distinct.pluck(:taggable_id)

@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   def index
     @page = params[:page].to_i
     @page = 1 if @page < 1
-    @tags = Tag.where.not(cleaned_tag: [nil, "", '-']).where("stories_count > 0").order('stories_count desc, cleaned_tag asc').paginate(page: @page, per_page: 250)
+    @tags = Tag.where.not(cleaned_tag: [nil, "", '-', 'page']).where("stories_count > 0").order('stories_count desc, cleaned_tag asc').paginate(page: @page, per_page: 250)
   end
 
   def show
