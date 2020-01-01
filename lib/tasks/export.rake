@@ -1,7 +1,14 @@
 namespace :export do
 
   task :all do
-    [:assets, :pages, :blog, :authors, :challenges, :stories, :tags].each do |t|
+
+    f = File.open("tmp/export/.htaccess", "w+")
+    f.puts %(RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://ficly.com/$1 [R,L])
+    f.close
+
+    [:assets, :blog, :authors, :challenges, :stories, :tags].each do |t|
       start_time = Time.now
       puts "Starting: #{t}"
       Rake::Task["export:#{t}"].invoke
@@ -23,6 +30,7 @@ namespace :export do
 
   task :stories => :environment do
     api.get("/")
+    api.get("/about")
     api.get("/stories")
     total_pages = Story.published.includes(:user).paginate(page: @page, per_page: 100).total_pages
 
@@ -36,12 +44,6 @@ namespace :export do
     Story.published.find_each do |s|
       api.get("/stories/#{s.id}")
       api.get("/stories/#{s.id}/comments")
-    end
-  end
-
-  task :pages => :environment do
-    Page.find_each do |page|
-      api.get("/pages/#{page.basename}")
     end
   end
 

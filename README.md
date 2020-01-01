@@ -24,7 +24,7 @@ mysql < export.sql
 
 ### Setting up Rails
 
-* You'll need to install Ruby 2.6.3 however you want to make that happen.
+* You'll need to install Ruby 2.6.5 however you want to make that happen.
 * Install the bundler gem: `gem install bundler`
 * `bundle`
 
