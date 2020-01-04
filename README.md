@@ -15,11 +15,11 @@ It took too long, but it works.
 
 ### Getting the Data
 
-The sql file to import is in db/export.sql.gz.  It's a little over 600mb uncompressed.  So, you'll need to do something like:
+The sql file to import is in db/ficly_export.sql.gz.  You'll need to do something like:
 
 ```cd db
-gunzip export.sql.gz
-mysql < export.sql
+gunzip ficly_export.sql.gz
+mysql < ficly_export.sql
 ```
 
 ### Setting up Rails
